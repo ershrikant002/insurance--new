@@ -1,0 +1,25 @@
+<main class="app-shell">
+  <header class="topbar">
+    <div>
+      <p>Insurance marketplace</p>
+      <h1>Health, motor, and travel policy orders</h1>
+    </div>
+    <nav aria-label="Policy type">
+      <button
+        type="button"
+        *ngFor="let type of types"
+        [class.active]="selectedType === type"
+        (click)="selectType(type)">
+        {{ type }}
+      </button>
+    </nav>
+  </header>
+
+  <section class="workspace">
+    <div class="left-pane">
+      <app-product-list [selectedType]="selectedType" (cartChanged)="refreshCart()" />
+      <app-orders [refreshToken]="orderRefreshToken" />
+    </div>
+    <app-cart [refreshToken]="cartRefreshToken" (checkedOut)="refreshOrders()" />
+  </section>
+</main>

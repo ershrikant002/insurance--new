@@ -1,0 +1,21 @@
+<section class="orders">
+  <div class="orders-heading">
+    <p>Recent orders</p>
+    <button type="button" (click)="load()">Refresh</button>
+  </div>
+
+  <div class="empty" *ngIf="orders.length === 0">No confirmed orders yet.</div>
+
+  <article class="order" *ngFor="let order of orders">
+    <div class="order-top">
+      <div>
+        <strong>Order #{{ order.id }}</strong>
+        <span>{{ order.customerName }} | {{ order.orderedAt | date:'medium' }}</span>
+      </div>
+      <div class="amount">{{ order.totalPremium | currency:'INR':'symbol':'1.0-0' }}</div>
+    </div>
+    <div class="order-items">
+      <span *ngFor="let item of order.items">{{ item.productName }} x {{ item.quantity }}</span>
+    </div>
+  </article>
+</section>

@@ -1,0 +1,47 @@
+<section class="catalog">
+  <div class="catalog-toolbar">
+    <div>
+      <p class="eyebrow">{{ selectedType }} policies</p>
+      <h2>Choose a policy</h2>
+    </div>
+    <div class="insured-form">
+      <label>
+        Insured name
+        <input [(ngModel)]="customer.insuredName" />
+      </label>
+      <label>
+        Email
+        <input type="email" [(ngModel)]="customer.insuredEmail" />
+      </label>
+    </div>
+  </div>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <p class="loading" *ngIf="loading">Loading policies...</p>
+
+  <div class="policy-grid" *ngIf="!loading">
+    <article class="policy-card" *ngFor="let product of products">
+      <div class="policy-top">
+        <span class="type-chip">{{ product.badge }}</span>
+        <span>{{ product.provider }}</span>
+      </div>
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <dl>
+        <div>
+          <dt>Premium</dt>
+          <dd>{{ product.premium | currency:'INR':'symbol':'1.0-0' }}</dd>
+        </div>
+        <div>
+          <dt>Coverage</dt>
+          <dd>{{ product.coverageAmount | currency:'INR':'symbol':'1.0-0' }}</dd>
+        </div>
+        <div>
+          <dt>Term</dt>
+          <dd>{{ product.durationMonths }} mo</dd>
+        </div>
+      </dl>
+      <button type="button" (click)="add(product)">Add to cart</button>
+    </article>
+  </div>
+</section>

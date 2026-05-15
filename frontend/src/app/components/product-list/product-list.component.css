@@ -1,0 +1,143 @@
+.catalog {
+  min-width: 0;
+}
+
+.catalog-toolbar {
+  align-items: end;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  color: #637083;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  margin: 0 0 5px;
+  text-transform: uppercase;
+}
+
+h2 {
+  color: #111827;
+  font-size: 28px;
+  margin: 0;
+}
+
+.insured-form {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  max-width: 430px;
+  width: 100%;
+}
+
+label {
+  color: #465467;
+  display: grid;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 6px;
+}
+
+input {
+  border: 1px solid #d6dce5;
+  border-radius: 8px;
+  font: inherit;
+  padding: 10px 12px;
+}
+
+.policy-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.policy-card {
+  background: #ffffff;
+  border: 1px solid #e3e8ef;
+  border-radius: 8px;
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+.policy-top {
+  align-items: center;
+  color: #637083;
+  display: flex;
+  font-size: 13px;
+  justify-content: space-between;
+}
+
+.type-chip {
+  background: #edf7f3;
+  border: 1px solid #b9e0d1;
+  border-radius: 999px;
+  color: #0f6a4d;
+  font-weight: 800;
+  padding: 5px 10px;
+}
+
+h3 {
+  color: #1b2533;
+  font-size: 20px;
+  margin: 0;
+}
+
+p {
+  color: #536174;
+  line-height: 1.55;
+  margin: 0;
+}
+
+dl {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+}
+
+dt {
+  color: #718096;
+  font-size: 12px;
+}
+
+dd {
+  color: #111827;
+  font-weight: 800;
+  margin: 2px 0 0;
+}
+
+button {
+  background: #145ea8;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  min-height: 42px;
+}
+
+.error {
+  color: #b42318;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.loading {
+  color: #637083;
+}
+
+@media (max-width: 760px) {
+  .catalog-toolbar {
+    align-items: stretch;
+    display: grid;
+  }
+
+  .insured-form {
+    grid-template-columns: 1fr;
+  }
+}

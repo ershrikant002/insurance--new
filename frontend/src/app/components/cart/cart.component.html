@@ -1,0 +1,39 @@
+<aside class="cart">
+  <div class="cart-header">
+    <h2>Cart</h2>
+    <span>{{ cart.items.length }} item{{ cart.items.length === 1 ? '' : 's' }}</span>
+  </div>
+
+  <div class="empty" *ngIf="cart.items.length === 0">No policies selected.</div>
+
+  <div class="cart-item" *ngFor="let item of cart.items">
+    <div>
+      <strong>{{ item.product.name }}</strong>
+      <span>{{ item.product.type }} | {{ item.product.premium | currency:'INR':'symbol':'1.0-0' }}</span>
+    </div>
+    <div class="quantity">
+      <button type="button" (click)="update(item.id, item.quantity - 1)" [disabled]="item.quantity <= 1">-</button>
+      <input type="number" min="1" [ngModel]="item.quantity" (ngModelChange)="update(item.id, $event)" />
+      <button type="button" (click)="update(item.id, item.quantity + 1)">+</button>
+    </div>
+    <button class="link-button" type="button" (click)="remove(item.id)">Remove</button>
+  </div>
+
+  <div class="total-row">
+    <span>Total premium</span>
+    <strong>{{ cart.totalPremium | currency:'INR':'symbol':'1.0-0' }}</strong>
+  </div>
+
+  <form class="checkout" (ngSubmit)="placeOrder()">
+    <label>
+      Customer name
+      <input name="customerName" [(ngModel)]="checkout.customerName" required />
+    </label>
+    <label>
+      Customer email
+      <input name="customerEmail" type="email" [(ngModel)]="checkout.customerEmail" required />
+    </label>
+    <button type="submit" [disabled]="cart.items.length === 0">Place order</button>
+    <p *ngIf="message">{{ message }}</p>
+  </form>
+</aside>
