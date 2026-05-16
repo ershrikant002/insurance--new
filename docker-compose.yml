@@ -1,0 +1,18 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    image: insurance-backend:latest
+    container_name: insurance-backend
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./frontend
+    image: insurance-frontend:latest
+    container_name: insurance-frontend
+    depends_on:
+      - backend
+    ports:
+      - "4200:80"

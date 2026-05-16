@@ -67,3 +67,33 @@ http://localhost:4200
 ```
 
 The frontend expects the backend at `http://localhost:8080/api`.
+
+## Docker
+
+Build and run both backend and frontend:
+
+```powershell
+docker compose up --build
+```
+
+Open the app:
+
+```text
+http://localhost:4200
+```
+
+Build images separately:
+
+```powershell
+docker build -t insurance-backend:latest ./backend
+docker build -t insurance-frontend:latest ./frontend
+```
+
+Tag and push to Docker Hub:
+
+```powershell
+docker tag insurance-backend:latest your-dockerhub-user/insurance-backend:latest
+docker tag insurance-frontend:latest your-dockerhub-user/insurance-frontend:latest
+docker push your-dockerhub-user/insurance-backend:latest
+docker push your-dockerhub-user/insurance-frontend:latest
+```
