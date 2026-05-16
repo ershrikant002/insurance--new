@@ -97,3 +97,31 @@ docker tag insurance-frontend:latest your-dockerhub-user/insurance-frontend:late
 docker push your-dockerhub-user/insurance-backend:latest
 docker push your-dockerhub-user/insurance-frontend:latest
 ```
+
+## Jenkins Pipeline With SonarQube
+
+The root `Jenkinsfile` builds both projects and runs one SonarQube scan for backend and frontend.
+
+Required Jenkins tools:
+
+- `JDK17`
+- `Maven3`
+- `Node20`
+- `SonarScanner`
+
+Required Jenkins SonarQube server name:
+
+```text
+SonarQube
+```
+
+If your Jenkins tool names are different, update the `tools` and `environment` values in `Jenkinsfile`.
+
+Pipeline stages:
+
+- Checkout
+- Backend Maven build and test
+- Frontend npm install and Angular build
+- SonarQube analysis
+- Quality gate
+- Docker compose build
